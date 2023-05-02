@@ -6,6 +6,7 @@ public class Job {
 
     private int id;
     private static int nextId = 1;
+    private String value;
 
     private String name;
     private Employer employer;
@@ -17,7 +18,10 @@ public class Job {
         id = nextId;
         nextId++;
     }
-
+    public Job(String value) {
+        this();
+        this.value = value;
+    }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
