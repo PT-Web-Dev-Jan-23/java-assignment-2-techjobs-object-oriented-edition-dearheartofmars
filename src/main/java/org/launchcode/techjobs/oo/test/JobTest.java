@@ -40,4 +40,10 @@ public class JobTest {
         assertTrue(test_Job3.getCoreCompetency() instanceof CoreCompetency);
         assertEquals("Persistence", test_Job3.getCoreCompetency().getValue());
     }
+    @Test
+    public void testJobsForEquality() {
+        Job test_job1 = new Job("ACME");
+        Job test_job2 = new Job("ACME");
+        assertFalse(test_job1.equals(test_job2));
+    }
 }
