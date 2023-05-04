@@ -42,8 +42,29 @@ public class JobTest {
     }
     @Test
     public void testJobsForEquality() {
-        Job test_job1 = new Job("ACME");
-        Job test_job2 = new Job("ACME");
+        Job test_job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));;
+        Job test_job2 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));;
         assertFalse(test_job1.equals(test_job2));
+    }
+    @Test
+    public void testToStringStartsAndEndsWithNewLine(){
+     Job test_Job1 = new Job("Product tester",
+             new Employer("ACME"),
+             new Location("Desert"),
+             new PositionType("Quality control"),
+             new CoreCompetency("Persistence"));
+     char firstChar = test_Job1.toString().charAt(0);
+     char lastChar = test_Job1.toString().charAt(test_Job1.toString().length() -1);
+
+     assertEquals(firstChar, '\n');
+     assertEquals(lastChar, '\n');
     }
 }
