@@ -25,8 +25,8 @@ public class JobTest {
                 new Location("Desert"),
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
-//        assertTrue(test_Job3.getJob() instanceof Job);
-//        assertEquals("Product tester", test_Job3.getJob().getValue());
+        assertTrue(test_Job3.getName() instanceof String);
+        assertEquals("Product tester", test_Job3.getName());
 
         assertTrue(test_Job3.getEmployer() instanceof Employer);
         assertEquals("ACME", test_Job3.getEmployer().getValue());
@@ -66,5 +66,38 @@ public class JobTest {
 
      assertEquals(firstChar, '\n');
      assertEquals(lastChar, '\n');
+    }
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job test_Job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        assertEquals(test_Job1.toString(),
+                "\n" +
+                        "ID: " + test_Job1.getId() + "\n" +
+                        "Name: " + test_Job1.getName() + "\n" +
+                        "Employer: " + test_Job1.getEmployer().getValue() + "\n" +
+                        "Location: " + test_Job1.getLocation().getValue() + "\n" +
+                        "Position Type: " + test_Job1.getPositionType().getValue() + "\n" +
+                        "Core Competency: " + test_Job1.getCoreCompetency().getValue() +
+                        "\n");
+
+    }
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job test_Job1 = new Job("",
+                new Employer(""),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        assertEquals(test_Job1.toString(), "\n" +
+                "ID: " + test_Job1.getId() + "\n"
+        + "Name: " + "Data not available" + "\n"
+        + "Employer: " + "Data not available" + "\n"
+        + "Location: " + test_Job1.getLocation().getValue() + "\n"
+        + "Position Type: " + test_Job1.getPositionType().getValue() + "\n"
+        + "Core Competency: " + test_Job1.getCoreCompetency().getValue() + "\n");
     }
 }

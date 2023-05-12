@@ -23,6 +23,7 @@ public class Job {
         this.value = value;
     }
 
+
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
         this.name = name;
@@ -77,6 +78,38 @@ public class Job {
 
     public int getId() {
         return id;
+    }
+
+
+    @Override
+    public String toString() {
+        String name = getName();
+        String employer = getEmployer().getValue();
+        String location = getLocation().getValue();
+        String positionType = getPositionType().getValue();
+        String coreCompetency = getCoreCompetency().getValue();
+
+        if(name == "") {
+            name = "Data not available";
+        }
+        if(employer == "") {
+            employer = "Data not available";
+        }
+        if(location == "") {
+            location = "Data not available";
+        }
+        if(positionType == "") {
+            positionType = "Data not available";
+        }
+        if(coreCompetency == "") {
+            coreCompetency = "Data not available";
+        }
+        return  "\n" + "ID: " + id +"\n" +
+                "Name: "+ name +"\n" +
+                "Employer: "+ employer +"\n" +
+                "Location: "+ location +"\n" +
+                "Position Type: "+ positionType +"\n" +
+                "Core Competency: "+ coreCompetency + "\n";
     }
 
     @Override
